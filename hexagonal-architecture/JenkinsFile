@@ -1,0 +1,24 @@
+/* Requires the Docker Pipeline plugin */
+pipeline {
+    agent { docker { image 'hexagonal-architecture' } }
+    stages {
+        stage('Checkout') {
+            steps {
+                // 소스 코드 체크아웃
+                checkout scm
+            }
+        }
+        stage('Build') {
+            steps {
+                // Gradle을 사용하여 빌드 및 테스트
+                sh './gradlew build'
+            }
+        }
+        stage('Test') {
+            steps {
+                // 테스트 실행
+                sh './gradlew test'
+            }
+        }
+    }
+}
