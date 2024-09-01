@@ -1,5 +1,7 @@
 package com.junbeom.hexagonalarchitecture.adapter.in.web;
 
+import com.junbeom.hexagonalarchitecture.application.port.in.GetMemberUseCase;
+import com.junbeom.hexagonalarchitecture.application.port.in.dto.MemberResponse;
 import com.junbeom.hexagonalarchitecture.controller.dto.MemberRequest;
 import com.junbeom.hexagonalarchitecture.domain.Address;
 import com.junbeom.hexagonalarchitecture.domain.Member;
@@ -7,10 +9,7 @@ import com.junbeom.hexagonalarchitecture.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
@@ -18,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class MemberController {
 
     private final MemberService memberService;
+    private final GetMemberUseCase getMemberUseCase;
 
     @PostMapping("/new")
     public ResponseEntity<Long> create(@RequestBody MemberRequest memberDto) {
@@ -30,6 +30,11 @@ public class MemberController {
 
         Long memberId = memberService.join(member);
         return new ResponseEntity<>(memberId, HttpStatus.CREATED);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<MemberResponse> findById(@PathVariable Long id) {
+        return ResponseEntity.ok(getMemberUseCase.findMemberById(id));
     }
 
 //    @GetMapping

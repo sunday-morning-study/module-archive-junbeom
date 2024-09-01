@@ -1,5 +1,8 @@
 package com.junbeom.hexagonalarchitecture.service;
 
+import com.junbeom.hexagonalarchitecture.adapter.out.LoadMemberPort;
+import com.junbeom.hexagonalarchitecture.application.port.in.GetMemberUseCase;
+import com.junbeom.hexagonalarchitecture.application.port.in.dto.MemberResponse;
 import com.junbeom.hexagonalarchitecture.domain.Member;
 import com.junbeom.hexagonalarchitecture.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
@@ -11,9 +14,10 @@ import java.util.List;
 @Service
 @Transactional(readOnly = true)
 @RequiredArgsConstructor
-public class MemberService {
+public class MemberService implements GetMemberUseCase {
 
     private final MemberRepository memberRepository;
+    private final LoadMemberPort loadMemberPort;
 
     /**
      * 회원 가입
@@ -38,8 +42,10 @@ public class MemberService {
         return memberRepository.findAll();
     }
 
-    public Member findOne(Long memberId) {
-        return memberRepository.findOne(memberId);
+    @Transactional(readOnly = true)
+    @Override
+    public MemberResponse findMemberById(Long id) {
+        Member member = loadMemberPort.loadMemberById(id);
+        return new MemberResponse(member);
     }
-
 }
