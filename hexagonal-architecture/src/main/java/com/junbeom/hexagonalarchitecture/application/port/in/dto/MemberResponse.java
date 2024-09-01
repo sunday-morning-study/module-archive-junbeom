@@ -1,4 +1,4 @@
-package com.junbeom.hexagonalarchitecture.controller.dto;
+package com.junbeom.hexagonalarchitecture.application.port.in.dto;
 
 public record MemberResponse(
         Long id,
