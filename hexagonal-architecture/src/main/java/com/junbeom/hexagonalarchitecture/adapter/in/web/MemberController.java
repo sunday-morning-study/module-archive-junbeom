@@ -9,15 +9,17 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequiredArgsConstructor
+@RequestMapping("/members")
 public class MemberController {
 
     private final MemberService memberService;
 
-    @PostMapping("/members/new")
+    @PostMapping("/new")
     public ResponseEntity<Long> create(@RequestBody MemberRequest memberDto) {
 
         Address address = new Address(memberDto.city(), memberDto.street(), memberDto.zipcode());
@@ -30,7 +32,7 @@ public class MemberController {
         return new ResponseEntity<>(memberId, HttpStatus.CREATED);
     }
 
-//    @GetMapping("/members")
+//    @GetMapping
 //    public String list(Model model) {
 //        List<Member> members = memberService.findMembers();
 //        model.addAttribute("members", members);
