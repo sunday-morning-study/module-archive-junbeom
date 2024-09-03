@@ -27,6 +27,7 @@ pipeline {
                     if [ -n "$CONTAINER_ID" ]; then
                         docker stop spring-boot-server
                         docker rm spring-boot-server
+                    fi
                 '''
             }
         }
