@@ -23,7 +23,7 @@ pipeline {
         stage('Stop and Remove Old Container') {
             steps {
                 sh '''
-                    CONTAINER_ID=$(docker ps -q -f name=spring-boot-server
+                    CONTAINER_ID=$(docker ps -q -f name=spring-boot-server)
                     if [ -n "$CONTAINER_ID" ]; then
                         docker stop spring-boot-server
                         docker rm spring-boot-server
