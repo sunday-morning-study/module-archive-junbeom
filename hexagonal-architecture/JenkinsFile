@@ -20,5 +20,26 @@ pipeline {
                 sh './gradlew test'
             }
         }
+        stage('Stop and Remove Old Container') {
+            steps {
+                sh '''
+                    CONTAINER_ID=$(docker ps -q -f name=spring-boot-server
+                    if [ -n "$CONTAINER_ID" ]; then
+                        docker stop spring-boot-server
+                        docker rm spring-boot-server
+                '''
+            }
+        }
+        stage('Build Docker Image') {
+            steps {
+                // 새 Docker 이미지를 빌드하고 기존 이미지 덮어쓰기
+                sh 'docker build -t hexagonal-architecture .'
+            }
+        }
+        stage('Run New Container') {
+            steps {
+                sh 'docker run -d -p 8080:8080 --name spring-boot-server hexagonal-architecture'
+            }
+        }
     }
 }
