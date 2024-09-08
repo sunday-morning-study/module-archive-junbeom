@@ -1,6 +1,5 @@
-package com.junbeom.hexagonalarchitecture.application.port.in.dto;
+package com.junbeom.hexagonalarchitecture.application.dto;
 
-import com.junbeom.hexagonalarchitecture.domain.Address;
 import com.junbeom.hexagonalarchitecture.domain.Member;
 
 public record MemberResponse(
