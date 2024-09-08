@@ -1,4 +1,4 @@
-package com.junbeom.hexagonalarchitecture.controller.dto;
+package com.junbeom.hexagonalarchitecture.application.dto;
 
 import jakarta.validation.constraints.NotEmpty;
 
