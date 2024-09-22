@@ -1,5 +1,8 @@
 package com.junbeom.hexagonalarchitecture.application.dto;
 
+import lombok.Builder;
+
+@Builder
 public record ItemResponse(
         Long id,
         String name,
