@@ -1,5 +1,6 @@
-package com.junbeom.hexagonalarchitecture.controller;
+package com.junbeom.hexagonalarchitecture.adapter.in.web;
 
+import com.junbeom.hexagonalarchitecture.controller.BookForm;
 import com.junbeom.hexagonalarchitecture.domain.item.Book;
 import com.junbeom.hexagonalarchitecture.domain.item.Item;
 import com.junbeom.hexagonalarchitecture.service.ItemService;
