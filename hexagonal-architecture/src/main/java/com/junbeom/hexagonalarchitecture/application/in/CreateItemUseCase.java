@@ -2,7 +2,7 @@ package com.junbeom.hexagonalarchitecture.application.in;
 
 import com.junbeom.hexagonalarchitecture.application.dto.ItemCreateRequest;
 
-public interface SaveItemUseCase {
+public interface CreateItemUseCase {
 
-    void saveItem(ItemCreateRequest itemCreateRequest);
+    void createItem(ItemCreateRequest itemCreateRequest);
 }

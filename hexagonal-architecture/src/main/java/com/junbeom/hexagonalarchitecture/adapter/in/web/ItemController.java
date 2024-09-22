@@ -21,7 +21,7 @@ public class ItemController {
 
     @PostMapping("/items/new")
     public ResponseEntity<Void> create(ItemCreateRequest itemCreateRequest) {
-        itemService.saveItem(itemCreateRequest);
+        itemService.createItem(itemCreateRequest);
         return ResponseEntity.ok().build();
     }
 

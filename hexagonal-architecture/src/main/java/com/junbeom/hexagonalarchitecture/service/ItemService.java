@@ -3,7 +3,7 @@ package com.junbeom.hexagonalarchitecture.service;
 import com.junbeom.hexagonalarchitecture.application.dto.ItemCreateRequest;
 import com.junbeom.hexagonalarchitecture.application.dto.ItemResponse;
 import com.junbeom.hexagonalarchitecture.application.in.GetItemUseCase;
-import com.junbeom.hexagonalarchitecture.application.in.SaveItemUseCase;
+import com.junbeom.hexagonalarchitecture.application.in.CreateItemUseCase;
 import com.junbeom.hexagonalarchitecture.domain.item.Book;
 import com.junbeom.hexagonalarchitecture.domain.item.Item;
 import com.junbeom.hexagonalarchitecture.repository.ItemRepository;
@@ -16,13 +16,13 @@ import java.util.List;
 @Service
 @Transactional(readOnly = true)
 @RequiredArgsConstructor
-public class ItemService implements SaveItemUseCase, GetItemUseCase {
+public class ItemService implements CreateItemUseCase, GetItemUseCase {
 
     private final ItemRepository itemRepository;
 
     @Override
     @Transactional
-    public void saveItem(ItemCreateRequest itemCreateRequest) {
+    public void createItem(ItemCreateRequest itemCreateRequest) {
         Book book = new Book();
         book.setName(itemCreateRequest.name());
         book.setPrice(itemCreateRequest.price());
