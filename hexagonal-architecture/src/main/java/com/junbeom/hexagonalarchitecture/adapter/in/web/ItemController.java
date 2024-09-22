@@ -1,10 +1,12 @@
 package com.junbeom.hexagonalarchitecture.adapter.in.web;
 
+import com.junbeom.hexagonalarchitecture.application.dto.ItemCreateRequest;
 import com.junbeom.hexagonalarchitecture.controller.BookForm;
 import com.junbeom.hexagonalarchitecture.domain.item.Book;
 import com.junbeom.hexagonalarchitecture.domain.item.Item;
 import com.junbeom.hexagonalarchitecture.service.ItemService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,17 +19,9 @@ public class ItemController {
     private final ItemService itemService;
 
     @PostMapping("/items/new")
-    public String create(BookForm form) {
-
-        Book book = new Book();
-        book.setName(form.getName());
-        book.setPrice(form.getPrice());
-        book.setStockQuantity(form.getStockQuantity());
-        book.setAuthor(form.getAuthor());
-        book.setIsbn(form.getIsbn());
-
-        itemService.saveItem(book);
-        return "redirect:/";
+    public ResponseEntity<Void> create(ItemCreateRequest itemCreateRequest) {
+        itemService.saveItem(itemCreateRequest);
+        return ResponseEntity.ok().build();
     }
 
     @GetMapping("/items")

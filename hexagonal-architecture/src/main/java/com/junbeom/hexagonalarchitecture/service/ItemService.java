@@ -1,5 +1,7 @@
 package com.junbeom.hexagonalarchitecture.service;
 
+import com.junbeom.hexagonalarchitecture.application.dto.ItemCreateRequest;
+import com.junbeom.hexagonalarchitecture.domain.item.Book;
 import com.junbeom.hexagonalarchitecture.domain.item.Item;
 import com.junbeom.hexagonalarchitecture.repository.ItemRepository;
 import lombok.RequiredArgsConstructor;
@@ -16,8 +18,14 @@ public class ItemService {
     private final ItemRepository itemRepository;
 
     @Transactional
-    public void saveItem(Item item) {
-        itemRepository.save(item);
+    public void saveItem(ItemCreateRequest itemCreateRequest) {
+        Book book = new Book();
+        book.setName(itemCreateRequest.name());
+        book.setPrice(itemCreateRequest.price());
+        book.setStockQuantity(itemCreateRequest.stockQuantity());
+        book.setAuthor(itemCreateRequest.author());
+        book.setIsbn(itemCreateRequest.isbn());
+        itemRepository.save(book);
     }
 
     @Transactional
