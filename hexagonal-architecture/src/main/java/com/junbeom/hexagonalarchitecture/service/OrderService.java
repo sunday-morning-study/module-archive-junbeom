@@ -3,7 +3,7 @@ package com.junbeom.hexagonalarchitecture.service;
 import com.junbeom.hexagonalarchitecture.domain.*;
 import com.junbeom.hexagonalarchitecture.domain.item.Item;
 import com.junbeom.hexagonalarchitecture.repository.ItemRepository;
-import com.junbeom.hexagonalarchitecture.repository.MemberRepository;
+import com.junbeom.hexagonalarchitecture.adapter.out.persistence.MemberRepository;
 import com.junbeom.hexagonalarchitecture.repository.OrderRepository;
 import com.junbeom.hexagonalarchitecture.repository.OrderSearch;
 import lombok.RequiredArgsConstructor;

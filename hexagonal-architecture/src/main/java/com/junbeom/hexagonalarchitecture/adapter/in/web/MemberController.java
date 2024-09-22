@@ -1,6 +1,6 @@
 package com.junbeom.hexagonalarchitecture.adapter.in.web;
 
-import com.junbeom.hexagonalarchitecture.application.port.in.GetMemberUseCase;
+import com.junbeom.hexagonalarchitecture.application.in.GetMemberUseCase;
 import com.junbeom.hexagonalarchitecture.application.dto.MemberResponse;
 import com.junbeom.hexagonalarchitecture.application.dto.MemberRequest;
 import com.junbeom.hexagonalarchitecture.domain.Address;

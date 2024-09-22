@@ -1,7 +1,6 @@
-package com.junbeom.hexagonalarchitecture.repository;
+package com.junbeom.hexagonalarchitecture.adapter.out.persistence;
 
 import com.junbeom.hexagonalarchitecture.domain.Member;
-import jakarta.persistence.EntityManager;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.junbeom.hexagonalarchitecture.application.port.in;
+package com.junbeom.hexagonalarchitecture.application.in;
 
 import com.junbeom.hexagonalarchitecture.application.dto.MemberResponse;
 

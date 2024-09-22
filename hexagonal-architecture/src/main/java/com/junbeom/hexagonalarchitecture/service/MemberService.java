@@ -1,10 +1,10 @@
 package com.junbeom.hexagonalarchitecture.service;
 
-import com.junbeom.hexagonalarchitecture.adapter.out.LoadMemberPort;
-import com.junbeom.hexagonalarchitecture.application.port.in.GetMemberUseCase;
+import com.junbeom.hexagonalarchitecture.application.port.LoadMemberPort;
+import com.junbeom.hexagonalarchitecture.application.in.GetMemberUseCase;
 import com.junbeom.hexagonalarchitecture.application.dto.MemberResponse;
 import com.junbeom.hexagonalarchitecture.domain.Member;
-import com.junbeom.hexagonalarchitecture.repository.MemberRepository;
+import com.junbeom.hexagonalarchitecture.adapter.out.persistence.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
