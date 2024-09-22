@@ -1,6 +1,7 @@
 package com.junbeom.hexagonalarchitecture.service;
 
 import com.junbeom.hexagonalarchitecture.application.dto.ItemCreateRequest;
+import com.junbeom.hexagonalarchitecture.application.dto.ItemResponse;
 import com.junbeom.hexagonalarchitecture.application.in.GetItemUseCase;
 import com.junbeom.hexagonalarchitecture.application.in.SaveItemUseCase;
 import com.junbeom.hexagonalarchitecture.domain.item.Book;
@@ -34,6 +35,20 @@ public class ItemService implements SaveItemUseCase, GetItemUseCase {
     @Override
     public List<Item> findAllItems() {
         return itemRepository.findAll();
+    }
+
+    @Override
+    public ItemResponse findItemById(Long id) {
+        Book item = (Book) itemRepository.findOne(id);
+
+        return ItemResponse.builder()
+                .id(item.getId())
+                .price(item.getPrice())
+                .name(item.getName())
+                .stockQuantity(item.getStockQuantity())
+                .author(item.getAuthor())
+                .isbn(item.getIsbn())
+                .build();
     }
 
     @Transactional

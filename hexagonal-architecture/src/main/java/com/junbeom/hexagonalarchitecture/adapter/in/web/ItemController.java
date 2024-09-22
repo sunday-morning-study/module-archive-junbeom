@@ -1,6 +1,7 @@
 package com.junbeom.hexagonalarchitecture.adapter.in.web;
 
 import com.junbeom.hexagonalarchitecture.application.dto.ItemCreateRequest;
+import com.junbeom.hexagonalarchitecture.application.dto.ItemResponse;
 import com.junbeom.hexagonalarchitecture.controller.BookForm;
 import com.junbeom.hexagonalarchitecture.domain.item.Book;
 import com.junbeom.hexagonalarchitecture.domain.item.Item;
@@ -28,6 +29,12 @@ public class ItemController {
     public ResponseEntity<List<Item>> list() {
         List<Item> items = itemService.findAllItems();
         return ResponseEntity.ok(items);
+    }
+
+    @GetMapping("/items/{id}")
+    public ResponseEntity<ItemResponse> findById(@PathVariable Long id) {
+        Item item = itemService.findOne(id);
+        return ResponseEntity.ok(itemService.findone());
     }
 
     @GetMapping("items/{itemId}/edit")
