@@ -1,6 +1,7 @@
 package com.junbeom.hexagonalarchitecture.service;
 
 import com.junbeom.hexagonalarchitecture.application.dto.ItemCreateRequest;
+import com.junbeom.hexagonalarchitecture.application.in.GetItemUseCase;
 import com.junbeom.hexagonalarchitecture.application.in.SaveItemUseCase;
 import com.junbeom.hexagonalarchitecture.domain.item.Book;
 import com.junbeom.hexagonalarchitecture.domain.item.Item;
@@ -14,7 +15,7 @@ import java.util.List;
 @Service
 @Transactional(readOnly = true)
 @RequiredArgsConstructor
-public class ItemService implements SaveItemUseCase {
+public class ItemService implements SaveItemUseCase, GetItemUseCase {
 
     private final ItemRepository itemRepository;
 
@@ -30,16 +31,17 @@ public class ItemService implements SaveItemUseCase {
         itemRepository.save(book);
     }
 
+    @Override
+    public List<Item> findAllItems() {
+        return itemRepository.findAll();
+    }
+
     @Transactional
     public void updateItem(Long itemId, String name, int price, int stockQuantity) {
         Item item = itemRepository.findOne(itemId);
         item.setName(name);
         item.setPrice(price);
         item.setStockQuantity(stockQuantity);
-    }
-
-    public List<Item> findItems() {
-        return itemRepository.findAll();
     }
 
     public Item findOne(Long itemId) {
