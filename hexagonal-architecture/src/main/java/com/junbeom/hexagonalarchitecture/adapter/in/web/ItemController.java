@@ -33,8 +33,7 @@ public class ItemController {
 
     @GetMapping("/items/{id}")
     public ResponseEntity<ItemResponse> findById(@PathVariable Long id) {
-        Item item = itemService.findOne(id);
-        return ResponseEntity.ok(itemService.findone());
+        return ResponseEntity.ok(itemService.findItemById(id));
     }
 
     @GetMapping("items/{itemId}/edit")
