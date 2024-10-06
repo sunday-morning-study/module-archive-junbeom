@@ -1,5 +1,6 @@
 package com.junbeom.hexagonalarchitecture.service;
 
+import com.junbeom.hexagonalarchitecture.adapter.out.persistence.ItemPersistenceAdapter;
 import com.junbeom.hexagonalarchitecture.application.dto.ItemCreateRequest;
 import com.junbeom.hexagonalarchitecture.application.dto.ItemResponse;
 import com.junbeom.hexagonalarchitecture.application.dto.ItemUpdateRequest;
@@ -20,6 +21,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ItemService implements CreateItemUseCase, GetItemUseCase, UpdateItemUseCase {
 
+    private final ItemPersistenceAdapter itemPersistenceAdapter;
     private final ItemRepository itemRepository;
 
     @Override
@@ -31,7 +33,7 @@ public class ItemService implements CreateItemUseCase, GetItemUseCase, UpdateIte
         book.setStockQuantity(itemCreateRequest.stockQuantity());
         book.setAuthor(itemCreateRequest.author());
         book.setIsbn(itemCreateRequest.isbn());
-        itemRepository.save(book);
+        itemPersistenceAdapter.createItem(book);
     }
 
     @Override
