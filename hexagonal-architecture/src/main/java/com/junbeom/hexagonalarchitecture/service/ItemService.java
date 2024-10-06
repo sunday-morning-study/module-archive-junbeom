@@ -4,12 +4,11 @@ import com.junbeom.hexagonalarchitecture.adapter.out.persistence.ItemPersistence
 import com.junbeom.hexagonalarchitecture.application.dto.ItemCreateRequest;
 import com.junbeom.hexagonalarchitecture.application.dto.ItemResponse;
 import com.junbeom.hexagonalarchitecture.application.dto.ItemUpdateRequest;
-import com.junbeom.hexagonalarchitecture.application.in.GetItemUseCase;
 import com.junbeom.hexagonalarchitecture.application.in.CreateItemUseCase;
+import com.junbeom.hexagonalarchitecture.application.in.GetItemUseCase;
 import com.junbeom.hexagonalarchitecture.application.in.UpdateItemUseCase;
 import com.junbeom.hexagonalarchitecture.domain.item.Book;
 import com.junbeom.hexagonalarchitecture.domain.item.Item;
-import com.junbeom.hexagonalarchitecture.repository.ItemRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,7 +21,6 @@ import java.util.List;
 public class ItemService implements CreateItemUseCase, GetItemUseCase, UpdateItemUseCase {
 
     private final ItemPersistenceAdapter itemPersistenceAdapter;
-    private final ItemRepository itemRepository;
 
     @Override
     @Transactional
