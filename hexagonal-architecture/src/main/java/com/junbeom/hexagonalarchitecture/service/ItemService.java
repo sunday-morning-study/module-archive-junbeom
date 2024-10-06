@@ -38,12 +38,12 @@ public class ItemService implements CreateItemUseCase, GetItemUseCase, UpdateIte
 
     @Override
     public List<Item> findAllItems() {
-        return itemRepository.findAll();
+        return itemPersistenceAdapter.loadAllItems();
     }
 
     @Override
     public ItemResponse findItemById(Long id) {
-        Book item = (Book) itemRepository.findOne(id);
+        Book item = (Book) itemPersistenceAdapter.loadItemById(id);
 
         return ItemResponse.builder()
                 .id(item.getId())
