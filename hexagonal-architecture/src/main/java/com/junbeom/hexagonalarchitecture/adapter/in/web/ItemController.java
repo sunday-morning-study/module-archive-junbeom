@@ -38,11 +38,11 @@ public class ItemController {
     }
 
     @PostMapping("items/{itemId}/edit")
-    public String updateItem(@PathVariable Long itemId, @RequestParam ItemUpdateRequest itemUpdateRequest) {
+    public ResponseEntity<ItemResponse> updateItem(@PathVariable Long itemId, @RequestParam ItemUpdateRequest itemUpdateRequest) {
 
-        itemService.updateItem(itemId, itemUpdateRequest);
+        ItemResponse itemResponse = itemService.updateItem(itemId, itemUpdateRequest);
 
-        return "redirect:/items";
+        return ResponseEntity.ok(itemResponse);
     }
 }
 
