@@ -58,7 +58,7 @@ public class ItemService implements CreateItemUseCase, GetItemUseCase, UpdateIte
     @Override
     @Transactional
     public ItemResponse updateItem(Long itemId, ItemUpdateRequest itemUpdateRequest) {
-        Book item = (Book) itemRepository.findOne(itemId);
+        Book item = (Book) itemPersistenceAdapter.loadItemById(itemId);
         item.setName(itemUpdateRequest.name());
         item.setPrice(itemUpdateRequest.price());
         item.setStockQuantity(itemUpdateRequest.stockQuantity());
@@ -71,10 +71,6 @@ public class ItemService implements CreateItemUseCase, GetItemUseCase, UpdateIte
                 .author(item.getAuthor())
                 .isbn(item.getIsbn())
                 .build();
-    }
-
-    public Item findOne(Long itemId) {
-        return itemRepository.findOne(itemId);
     }
 
 }
