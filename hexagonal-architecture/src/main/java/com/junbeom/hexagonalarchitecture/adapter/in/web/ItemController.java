@@ -2,6 +2,7 @@ package com.junbeom.hexagonalarchitecture.adapter.in.web;
 
 import com.junbeom.hexagonalarchitecture.application.dto.ItemCreateRequest;
 import com.junbeom.hexagonalarchitecture.application.dto.ItemResponse;
+import com.junbeom.hexagonalarchitecture.application.dto.ItemUpdateRequest;
 import com.junbeom.hexagonalarchitecture.controller.BookForm;
 import com.junbeom.hexagonalarchitecture.domain.item.Book;
 import com.junbeom.hexagonalarchitecture.domain.item.Item;
@@ -37,9 +38,9 @@ public class ItemController {
     }
 
     @PostMapping("items/{itemId}/edit")
-    public String updateItem(@PathVariable Long itemId, @ModelAttribute("form") BookForm form) {
+    public String updateItem(@PathVariable Long itemId, @RequestParam ItemUpdateRequest itemUpdateRequest) {
 
-        itemService.updateItem(itemId, form.getName(), form.getPrice(), form.getStockQuantity());
+        itemService.updateItem(itemId, itemUpdateRequest);
 
         return "redirect:/items";
     }

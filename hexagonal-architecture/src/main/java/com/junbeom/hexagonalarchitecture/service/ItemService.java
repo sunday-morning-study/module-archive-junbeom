@@ -2,8 +2,10 @@ package com.junbeom.hexagonalarchitecture.service;
 
 import com.junbeom.hexagonalarchitecture.application.dto.ItemCreateRequest;
 import com.junbeom.hexagonalarchitecture.application.dto.ItemResponse;
+import com.junbeom.hexagonalarchitecture.application.dto.ItemUpdateRequest;
 import com.junbeom.hexagonalarchitecture.application.in.GetItemUseCase;
 import com.junbeom.hexagonalarchitecture.application.in.CreateItemUseCase;
+import com.junbeom.hexagonalarchitecture.application.in.UpdateItemUseCase;
 import com.junbeom.hexagonalarchitecture.domain.item.Book;
 import com.junbeom.hexagonalarchitecture.domain.item.Item;
 import com.junbeom.hexagonalarchitecture.repository.ItemRepository;
@@ -16,7 +18,7 @@ import java.util.List;
 @Service
 @Transactional(readOnly = true)
 @RequiredArgsConstructor
-public class ItemService implements CreateItemUseCase, GetItemUseCase {
+public class ItemService implements CreateItemUseCase, GetItemUseCase, UpdateItemUseCase {
 
     private final ItemRepository itemRepository;
 
@@ -51,12 +53,13 @@ public class ItemService implements CreateItemUseCase, GetItemUseCase {
                 .build();
     }
 
+    @Override
     @Transactional
-    public void updateItem(Long itemId, String name, int price, int stockQuantity) {
+    public void updateItem(Long itemId, ItemUpdateRequest itemUpdateRequest) {
         Item item = itemRepository.findOne(itemId);
-        item.setName(name);
-        item.setPrice(price);
-        item.setStockQuantity(stockQuantity);
+        item.setName(itemUpdateRequest.name());
+        item.setPrice(itemUpdateRequest.price());
+        item.setStockQuantity(itemUpdateRequest.stockQuantity());
     }
 
     public Item findOne(Long itemId) {
