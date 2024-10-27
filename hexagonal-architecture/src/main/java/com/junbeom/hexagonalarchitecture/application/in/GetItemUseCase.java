@@ -1,6 +1,6 @@
 package com.junbeom.hexagonalarchitecture.application.in;
 
-import com.junbeom.hexagonalarchitecture.application.dto.ItemResponse;
+import com.junbeom.hexagonalarchitecture.adapter.in.web.dto.ItemResponse;
 import com.junbeom.hexagonalarchitecture.domain.item.Item;
 
 import java.util.List;

@@ -1,6 +1,6 @@
 package com.junbeom.hexagonalarchitecture.application.in;
 
-import com.junbeom.hexagonalarchitecture.application.dto.ItemCreateRequest;
+import com.junbeom.hexagonalarchitecture.adapter.in.web.dto.ItemCreateRequest;
 
 public interface CreateItemUseCase {
 

@@ -1,4 +1,4 @@
-package com.junbeom.hexagonalarchitecture.application.dto;
+package com.junbeom.hexagonalarchitecture.adapter.in.web.dto;
 
 import com.junbeom.hexagonalarchitecture.domain.Member;
 

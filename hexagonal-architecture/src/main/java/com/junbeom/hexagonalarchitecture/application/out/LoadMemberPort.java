@@ -1,4 +1,4 @@
-package com.junbeom.hexagonalarchitecture.application.port;
+package com.junbeom.hexagonalarchitecture.application.out;
 
 import com.junbeom.hexagonalarchitecture.domain.Member;
 

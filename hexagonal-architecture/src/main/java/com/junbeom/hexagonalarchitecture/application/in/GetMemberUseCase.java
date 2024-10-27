@@ -1,6 +1,6 @@
 package com.junbeom.hexagonalarchitecture.application.in;
 
-import com.junbeom.hexagonalarchitecture.application.dto.MemberResponse;
+import com.junbeom.hexagonalarchitecture.adapter.in.web.dto.MemberResponse;
 
 public interface GetMemberUseCase {
 

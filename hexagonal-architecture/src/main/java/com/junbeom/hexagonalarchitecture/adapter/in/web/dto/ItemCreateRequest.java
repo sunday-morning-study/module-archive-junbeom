@@ -1,9 +1,6 @@
-package com.junbeom.hexagonalarchitecture.application.dto;
+package com.junbeom.hexagonalarchitecture.adapter.in.web.dto;
 
-import lombok.Builder;
-
-@Builder
-public record ItemResponse(
+public record ItemCreateRequest (
         Long id,
         String name,
         int price,

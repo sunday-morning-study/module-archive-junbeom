@@ -1,9 +1,9 @@
-package com.junbeom.hexagonalarchitecture.service;
+package com.junbeom.hexagonalarchitecture.application;
 
 import com.junbeom.hexagonalarchitecture.adapter.out.persistence.ItemPersistenceAdapter;
-import com.junbeom.hexagonalarchitecture.application.dto.ItemCreateRequest;
-import com.junbeom.hexagonalarchitecture.application.dto.ItemResponse;
-import com.junbeom.hexagonalarchitecture.application.dto.ItemUpdateRequest;
+import com.junbeom.hexagonalarchitecture.adapter.in.web.dto.ItemCreateRequest;
+import com.junbeom.hexagonalarchitecture.adapter.in.web.dto.ItemResponse;
+import com.junbeom.hexagonalarchitecture.adapter.in.web.dto.ItemUpdateRequest;
 import com.junbeom.hexagonalarchitecture.application.in.CreateItemUseCase;
 import com.junbeom.hexagonalarchitecture.application.in.GetItemUseCase;
 import com.junbeom.hexagonalarchitecture.application.in.UpdateItemUseCase;

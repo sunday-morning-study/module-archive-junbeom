@@ -1,8 +1,8 @@
-package com.junbeom.hexagonalarchitecture.service;
+package com.junbeom.hexagonalarchitecture.application;
 
-import com.junbeom.hexagonalarchitecture.application.port.LoadMemberPort;
+import com.junbeom.hexagonalarchitecture.application.out.LoadMemberPort;
 import com.junbeom.hexagonalarchitecture.application.in.GetMemberUseCase;
-import com.junbeom.hexagonalarchitecture.application.dto.MemberResponse;
+import com.junbeom.hexagonalarchitecture.adapter.in.web.dto.MemberResponse;
 import com.junbeom.hexagonalarchitecture.domain.Member;
 import com.junbeom.hexagonalarchitecture.adapter.out.persistence.MemberRepository;
 import lombok.RequiredArgsConstructor;

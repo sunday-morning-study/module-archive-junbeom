@@ -1,7 +1,7 @@
 package com.junbeom.hexagonalarchitecture.adapter.out.persistence;
 
-import com.junbeom.hexagonalarchitecture.application.port.CreateItemPort;
-import com.junbeom.hexagonalarchitecture.application.port.LoadItemPort;
+import com.junbeom.hexagonalarchitecture.application.out.CreateItemPort;
+import com.junbeom.hexagonalarchitecture.application.out.LoadItemPort;
 import com.junbeom.hexagonalarchitecture.domain.item.Item;
 import com.junbeom.hexagonalarchitecture.repository.ItemRepository;
 import lombok.RequiredArgsConstructor;

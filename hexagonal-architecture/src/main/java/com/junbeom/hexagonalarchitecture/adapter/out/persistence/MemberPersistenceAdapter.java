@@ -1,6 +1,6 @@
 package com.junbeom.hexagonalarchitecture.adapter.out.persistence;
 
-import com.junbeom.hexagonalarchitecture.application.port.LoadMemberPort;
+import com.junbeom.hexagonalarchitecture.application.out.LoadMemberPort;
 import com.junbeom.hexagonalarchitecture.domain.Member;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;

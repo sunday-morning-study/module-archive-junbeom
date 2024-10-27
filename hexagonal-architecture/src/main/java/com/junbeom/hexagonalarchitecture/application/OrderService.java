@@ -1,4 +1,4 @@
-package com.junbeom.hexagonalarchitecture.service;
+package com.junbeom.hexagonalarchitecture.application;
 
 import com.junbeom.hexagonalarchitecture.domain.*;
 import com.junbeom.hexagonalarchitecture.domain.item.Item;
