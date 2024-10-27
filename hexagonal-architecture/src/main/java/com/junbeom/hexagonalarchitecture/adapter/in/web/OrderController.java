@@ -1,5 +1,6 @@
 package com.junbeom.hexagonalarchitecture.adapter.in.web;
 
+import com.junbeom.hexagonalarchitecture.adapter.in.web.dto.OrderCreateRequest;
 import com.junbeom.hexagonalarchitecture.application.OrderService;
 import com.junbeom.hexagonalarchitecture.domain.Order;
 import com.junbeom.hexagonalarchitecture.repository.OrderSearch;
@@ -18,11 +19,8 @@ public class OrderController {
     private final OrderService orderService;
 
     @PostMapping("/order")
-    public ResponseEntity<Long> order(@RequestParam("memberId") Long memberId,
-                                @RequestParam("itemId") Long itemId,
-                                @RequestParam("count") int count) {
-
-        orderService.order(memberId, itemId, count);
+    public ResponseEntity<Long> order(OrderCreateRequest orderCreateRequest) {
+        orderService.order(orderCreateRequest.memberId(), orderCreateRequest.itemId(), orderCreateRequest.count());
         return ResponseEntity.status(HttpStatus.CREATED).body(null);
     }
 
