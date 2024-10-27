@@ -5,7 +5,7 @@ import com.junbeom.hexagonalarchitecture.domain.item.Item;
 import com.junbeom.hexagonalarchitecture.repository.ItemRepository;
 import com.junbeom.hexagonalarchitecture.adapter.out.persistence.MemberRepository;
 import com.junbeom.hexagonalarchitecture.repository.OrderRepository;
-import com.junbeom.hexagonalarchitecture.repository.OrderSearch;
+import com.junbeom.hexagonalarchitecture.adapter.in.web.dto.OrderSearchRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -61,7 +61,7 @@ public class OrderService {
     }
 
     //검색
-    public List<Order> findOrders(OrderSearch orderSearch) {
-        return orderRepository.findAllByString(orderSearch);
+    public List<Order> findOrders(OrderSearchRequest orderSearchRequest) {
+        return orderRepository.findAllByString(orderSearchRequest);
     }
 }

@@ -1,9 +1,9 @@
 package com.junbeom.hexagonalarchitecture.adapter.in.web;
 
 import com.junbeom.hexagonalarchitecture.adapter.in.web.dto.OrderCreateRequest;
+import com.junbeom.hexagonalarchitecture.adapter.in.web.dto.OrderSearchRequest;
 import com.junbeom.hexagonalarchitecture.application.OrderService;
 import com.junbeom.hexagonalarchitecture.domain.Order;
-import com.junbeom.hexagonalarchitecture.repository.OrderSearch;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,8 +25,8 @@ public class OrderController {
     }
 
     @GetMapping("/orders")
-    public ResponseEntity<List<Order>> orderList(@ModelAttribute("orderSearch") OrderSearch orderSearch, Model model) {
-        List<Order> orders = orderService.findOrders(orderSearch);
+    public ResponseEntity<List<Order>> orderList(@RequestBody OrderSearchRequest orderSearchRequest, Model model) {
+        List<Order> orders = orderService.findOrders(orderSearchRequest);
         model.addAttribute("orders", orders);
 
         return ResponseEntity.status(HttpStatus.OK).body(orders);
