@@ -2,6 +2,7 @@ package com.junbeom.hexagonalarchitecture.application;
 
 import com.junbeom.hexagonalarchitecture.adapter.in.web.dto.OrderCreateRequest;
 import com.junbeom.hexagonalarchitecture.application.in.CreateOrderUseCase;
+import com.junbeom.hexagonalarchitecture.application.in.UpdateOrderUseCase;
 import com.junbeom.hexagonalarchitecture.domain.*;
 import com.junbeom.hexagonalarchitecture.domain.item.Item;
 import com.junbeom.hexagonalarchitecture.repository.ItemRepository;
@@ -18,7 +19,7 @@ import java.util.NoSuchElementException;
 @Service
 @Transactional(readOnly = true)
 @RequiredArgsConstructor
-public class OrderService implements CreateOrderUseCase {
+public class OrderService implements CreateOrderUseCase, UpdateOrderUseCase {
 
     private final OrderRepository orderRepository;
     private final MemberRepository memberRepository;
@@ -55,6 +56,7 @@ public class OrderService implements CreateOrderUseCase {
     /**
      * 주문 취소
      */
+    @Override
     @Transactional
     public void cancelOrder(Long orderId) {
         //주문 엔티티 조회
