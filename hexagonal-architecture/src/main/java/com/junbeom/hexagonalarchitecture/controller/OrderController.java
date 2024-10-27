@@ -26,7 +26,7 @@ public class OrderController {
     public String createForm(Model model) {
 
         List<Member> members = memberService.findMembers();
-        List<Item> items = itemService.findItems();
+        List<Item> items = itemService.findAllItems();
 
         model.addAttribute("members", members);
         model.addAttribute("items", items);
