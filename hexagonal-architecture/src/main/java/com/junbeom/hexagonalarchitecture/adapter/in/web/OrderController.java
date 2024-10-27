@@ -7,7 +7,6 @@ import com.junbeom.hexagonalarchitecture.domain.Order;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -25,9 +24,8 @@ public class OrderController {
     }
 
     @GetMapping("/orders")
-    public ResponseEntity<List<Order>> orderList(@RequestBody OrderSearchRequest orderSearchRequest, Model model) {
+    public ResponseEntity<List<Order>> orderList(@RequestBody OrderSearchRequest orderSearchRequest) {
         List<Order> orders = orderService.findOrders(orderSearchRequest);
-        model.addAttribute("orders", orders);
 
         return ResponseEntity.status(HttpStatus.OK).body(orders);
     }
