@@ -1,7 +1,10 @@
 package com.junbeom.hexagonalarchitecture.application;
 
 import com.junbeom.hexagonalarchitecture.adapter.in.web.dto.OrderCreateRequest;
+import com.junbeom.hexagonalarchitecture.adapter.in.web.dto.OrderItemResponse;
+import com.junbeom.hexagonalarchitecture.adapter.in.web.dto.OrderResponse;
 import com.junbeom.hexagonalarchitecture.application.in.CreateOrderUseCase;
+import com.junbeom.hexagonalarchitecture.application.in.GetOrderUseCase;
 import com.junbeom.hexagonalarchitecture.application.in.UpdateOrderUseCase;
 import com.junbeom.hexagonalarchitecture.domain.*;
 import com.junbeom.hexagonalarchitecture.domain.item.Item;
@@ -13,13 +16,14 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 
 @Service
 @Transactional(readOnly = true)
 @RequiredArgsConstructor
-public class OrderService implements CreateOrderUseCase, UpdateOrderUseCase {
+public class OrderService implements CreateOrderUseCase, UpdateOrderUseCase, GetOrderUseCase {
 
     private final OrderRepository orderRepository;
     private final MemberRepository memberRepository;
@@ -66,7 +70,17 @@ public class OrderService implements CreateOrderUseCase, UpdateOrderUseCase {
     }
 
     //검색
-    public List<Order> findOrders(OrderSearchRequest orderSearchRequest) {
-        return orderRepository.findAllByString(orderSearchRequest);
+    @Override
+    @Transactional
+    public List<OrderResponse> findOrders(OrderSearchRequest orderSearchRequest) {
+        List<Order> orders = orderRepository.findAllByString(orderSearchRequest);
+        return orders.stream().map(order -> {
+            List<OrderItem> orderItems = order.getOrderItems();
+            List<OrderItemResponse> orderItemResponses = orderItems.stream()
+                    .map(OrderItemResponse::new).toList();
+            Delivery delivery = order.getDelivery();
+            Address deliveryAddress = delivery.getAddress();
+            return new OrderResponse(order, orderItemResponses, delivery, deliveryAddress);
+        }).toList();
     }
 }
