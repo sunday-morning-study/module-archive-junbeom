@@ -19,7 +19,7 @@ public class OrderController {
 
     @PostMapping("/order")
     public ResponseEntity<Long> order(OrderCreateRequest orderCreateRequest) {
-        Long orderId = orderService.order(orderCreateRequest.memberId(), orderCreateRequest.itemId(), orderCreateRequest.count());
+        Long orderId = orderService.createOrder(orderCreateRequest);
         return ResponseEntity.status(HttpStatus.CREATED).body(orderId);
     }
 

@@ -1,5 +1,7 @@
 package com.junbeom.hexagonalarchitecture.application;
 
+import com.junbeom.hexagonalarchitecture.adapter.in.web.dto.OrderCreateRequest;
+import com.junbeom.hexagonalarchitecture.application.in.CreateOrderUseCase;
 import com.junbeom.hexagonalarchitecture.domain.*;
 import com.junbeom.hexagonalarchitecture.domain.item.Item;
 import com.junbeom.hexagonalarchitecture.repository.ItemRepository;
@@ -16,17 +18,18 @@ import java.util.NoSuchElementException;
 @Service
 @Transactional(readOnly = true)
 @RequiredArgsConstructor
-public class OrderService {
+public class OrderService implements CreateOrderUseCase {
 
     private final OrderRepository orderRepository;
     private final MemberRepository memberRepository;
     private final ItemRepository itemRepository;
 
-    /**
-     * 주문
-     */
+    @Override
     @Transactional
-    public Long order(Long memberId, Long itemId, int count) {
+    public Long createOrder(OrderCreateRequest orderCreateRequest) {
+        Long memberId = orderCreateRequest.memberId();
+        Long itemId = orderCreateRequest.itemId();
+        int count = orderCreateRequest.count();
 
         //엔티티 조회
         Member member = memberRepository.findById(memberId).orElseThrow(NoSuchElementException::new);
