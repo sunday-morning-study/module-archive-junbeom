@@ -1,4 +1,4 @@
-package com.junbeom.hexagonalarchitecture.controller;
+package com.junbeom.hexagonalarchitecture.adapter.in.web;
 
 import com.junbeom.hexagonalarchitecture.application.OrderService;
 import com.junbeom.hexagonalarchitecture.domain.Order;
