@@ -1,7 +1,6 @@
 package com.junbeom.hexagonalarchitecture.adapter.in.web.dto;
 
-import com.junbeom.hexagonalarchitecture.domain.DeliveryStatus;
-import com.junbeom.hexagonalarchitecture.domain.OrderStatus;
+import com.junbeom.hexagonalarchitecture.domain.*;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -16,4 +15,10 @@ public record OrderResponse(
         String deliveryCity,
         String deliveryStreet,
         String deliveryZipcode
-) {}
+) {
+    public OrderResponse(Order order, List<OrderItemResponse> orderItems, Delivery delivery, Address deliveryAddress) {
+        this(order.getId(), orderItems, order.getOrderDate(), order.getStatus(),
+                delivery.getId(), delivery.getStatus(), deliveryAddress.getCity(),
+                deliveryAddress.getStreet(), deliveryAddress.getZipcode());
+    }
+}
